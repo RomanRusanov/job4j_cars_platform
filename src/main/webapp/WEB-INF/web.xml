@@ -1,0 +1,75 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         version="2.5"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <display-name>Car platform</display-name>
+  <servlet>
+    <servlet-name>AuthServlet</servlet-name>
+    <servlet-class>servlet.AuthServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/auth.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RegServlet</servlet-name>
+    <servlet-class>servlet.RegServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegServlet</servlet-name>
+    <url-pattern>/reg.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MainServlet</servlet-name>
+    <servlet-class>servlet.MainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainServlet</servlet-name>
+    <url-pattern>/main.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ChangeStatusServlet</servlet-name>
+    <servlet-class>servlet.ChangeStatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangeStatusServlet</servlet-name>
+    <url-pattern>/change_status.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddItemServlet</servlet-name>
+    <servlet-class>servlet.AddItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddItemServlet</servlet-name>
+    <url-pattern>/add_item.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UploadPhotoServlet</servlet-name>
+    <servlet-class>servlet.UploadPhotoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadPhotoServlet</servlet-name>
+    <url-pattern>/upload_photo.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/download.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>servlet.DownloadServlet</servlet-class>
+  </servlet>
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>filter.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+</web-app>
