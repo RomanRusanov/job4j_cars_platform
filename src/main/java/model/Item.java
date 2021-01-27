@@ -52,7 +52,7 @@ public class Item {
      * Lazy fetch type.
      * Unidirectional relation.
      */
-    @OneToMany(fetch = FetchType.EAGER,
+    @OneToMany(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private Set<Image> images = new HashSet<>();

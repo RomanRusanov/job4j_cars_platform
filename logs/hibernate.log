@@ -1,0 +1,95 @@
+Hibernate:
+    /* select
+        distinct i
+    from
+        Item i
+    join
+        fetch i.category
+    join
+        fetch i.user
+    join
+        fetch i.images
+    join
+        fetch i.car c
+    join
+        fetch c.bodyType
+    join
+        fetch c.brand
+    join
+        fetch c.engineType
+    join
+        fetch c.transmission
+    join
+        fetch c.wheelDriveType */ select
+            distinct item0_.id as id1_6_0_,
+            category2_.id as id1_3_1_,
+            user3_.id as id1_10_2_,
+            image5_.id as id1_5_3_,
+            car6_.id as id1_2_4_,
+            bodytype7_.id as id1_0_5_,
+            brand8_.id as id1_1_6_,
+            enginetype9_.id as id1_4_7_,
+            transmissi10_.id as id1_9_8_,
+            wheeldrive11_.id as id1_11_9_,
+            item0_.car_id as car_id4_6_0_,
+            item0_.description as descript2_6_0_,
+            item0_.sold as sold3_6_0_,
+            item0_.user_id as user_id5_6_0_,
+            category2_.description as descript2_3_1_,
+            category1_.Item_id as item_id1_7_0__,
+            category1_.category_id as category2_7_0__,
+            user3_.name as name2_10_2_,
+            user3_.password as password3_10_2_,
+            image5_.fileName as filename2_5_3_,
+            image5_.path as path3_5_3_,
+            images4_.Item_id as item_id1_8_1__,
+            images4_.images_id as images_i2_8_1__,
+            car6_.bodyType_id as bodytype6_2_4_,
+            car6_.brand_id as brand_id7_2_4_,
+            car6_.creationDate as creation2_2_4_,
+            car6_.engineType_id as enginety8_2_4_,
+            car6_.mileage as mileage3_2_4_,
+            car6_.model as model4_2_4_,
+            car6_.price as price5_2_4_,
+            car6_.transmission_id as transmis9_2_4_,
+            car6_.wheelDriveType_id as wheeldr10_2_4_,
+            bodytype7_.description as descript2_0_5_,
+            brand8_.description as descript2_1_6_,
+            enginetype9_.description as descript2_4_7_,
+            transmissi10_.description as descript2_9_8_,
+            wheeldrive11_.description as descript2_11_9_
+        from
+            Item item0_
+        inner join
+            Item_Category category1_
+                on item0_.id=category1_.Item_id
+        inner join
+            Category category2_
+                on category1_.category_id=category2_.id
+        inner join
+            users user3_
+                on item0_.user_id=user3_.id
+        inner join
+            Item_Image images4_
+                on item0_.id=images4_.Item_id
+        inner join
+            Image image5_
+                on images4_.images_id=image5_.id
+        inner join
+            Car car6_
+                on item0_.car_id=car6_.id
+        inner join
+            BodyType bodytype7_
+                on car6_.bodyType_id=bodytype7_.id
+        inner join
+            Brand brand8_
+                on car6_.brand_id=brand8_.id
+        inner join
+            EngineType enginetype9_
+                on car6_.engineType_id=enginetype9_.id
+        inner join
+            Transmission transmissi10_
+                on car6_.transmission_id=transmissi10_.id
+        inner join
+            WheelDriveType wheeldrive11_
+                on car6_.wheelDriveType_id=wheeldrive11_.id
