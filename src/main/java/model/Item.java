@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -52,7 +55,7 @@ public class Item {
      * Lazy fetch type.
      * Unidirectional relation.
      */
-    @OneToMany(fetch = FetchType.LAZY,
+    @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private Set<Image> images = new HashSet<>();
@@ -71,6 +74,11 @@ public class Item {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private Car car;
+    /**
+     * The filed contain date when item was create.
+     */
+    @Temporal(TemporalType.DATE)
+    private Date dateCreateItem;
 
     /**
      * The method create instance item.
@@ -83,6 +91,7 @@ public class Item {
     public static Item of(String description,
                           Boolean isSold,
                           User user,
+                          Date dateCreateItem,
                           Car car)
     {
         Item item = new Item();
@@ -90,6 +99,7 @@ public class Item {
         item.sold = isSold;
         item.user = user;
         item.car = car;
+        item.dateCreateItem = dateCreateItem;
         return item;
     }
 
@@ -222,6 +232,22 @@ public class Item {
     }
 
     /**
+     * The getter.
+     * @return Date.
+     */
+    public Date getDateCreateItem() {
+        return dateCreateItem;
+    }
+
+    /**
+     * The setter.
+     * @param dateCreateItem dateCreateItem.
+     */
+    public void setDateCreateItem(Date dateCreateItem) {
+        this.dateCreateItem = dateCreateItem;
+    }
+
+    /**
      * The method override equals.
      * @param o Object to compare.
      * @return if fields equals return true, otherwise false.
@@ -257,6 +283,7 @@ public class Item {
                 ", images=" + images +
                 ", category=" + category +
                 ", car=" + car +
+                ", dateCreateItem=" + dateCreateItem +
                 '}';
     }
 }

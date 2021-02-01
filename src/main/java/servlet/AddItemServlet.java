@@ -97,6 +97,7 @@ public class AddItemServlet extends HttpServlet {
                 description,
                 false,
                 currentUser,
+                new Date(System.currentTimeMillis()),
                 Car.of(Hibernate.instOf().getInstanceById(Brand.class, brand_id),
                         model,
                         price,

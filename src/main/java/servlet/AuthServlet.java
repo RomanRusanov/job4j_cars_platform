@@ -1,5 +1,9 @@
 package servlet;
 
+import filter.app.BrandAudi;
+import filter.FilterOperation;
+import filter.app.ThisDay;
+import filter.app.WithPhoto;
 import model.Image;
 import model.User;
 import org.slf4j.Logger;
@@ -34,7 +38,8 @@ public class AuthServlet extends HttpServlet {
      * The servlet get request from DB if user with passed name and password
      * exist in db redirect to main.do otherwise to reg.jsp page.
      * When user pass authentication add session attribute "imagesAdd" where store images
-     * before item is store to db on add_item.jsp page.
+     * before item is store to db on add_item.jsp page. Attribute "filterOperation" store
+     * all filters what user can use.
      * @param req Request.
      * @param resp Response.
      * @throws javax.servlet.ServletException ServletException.
@@ -53,10 +58,23 @@ public class AuthServlet extends HttpServlet {
             HttpSession sc = req.getSession();
             sc.setAttribute("user", userFromDB);
             sc.setAttribute("imagesAdd", new ArrayList<Image>());
+            sc.setAttribute("filterOperation", this.initFilters());
             resp.sendRedirect(req.getContextPath() + "/main.do");
         } else {
             LOG.info(MARKER, "Try to login not registered user.");
             resp.sendRedirect(req.getContextPath() + "/reg.jsp");
         }
+    }
+
+    /**
+     * The method add all filters to application.
+     * @return instance for filter interaction.
+     */
+    private FilterOperation initFilters() {
+        FilterOperation filterOperation = new FilterOperation();
+        filterOperation.addFilter(new ThisDay());
+        filterOperation.addFilter(new WithPhoto());
+        filterOperation.addFilter(new BrandAudi());
+        return filterOperation;
     }
 }

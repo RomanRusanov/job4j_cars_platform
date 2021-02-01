@@ -152,7 +152,6 @@ public class Hibernate implements AutoCloseable {
                         "select distinct i from Item i " +
                                 "join fetch i.category " +
                                 "join fetch i.user " +
-                                "join fetch i.images " + // if images empty query not work
                                 "join fetch i.car c " +
                                 "join fetch c.bodyType " +
                                 "join fetch c.brand " +
